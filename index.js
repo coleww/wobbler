@@ -15,7 +15,7 @@ module.exports = function (context, data) {
   nodes.delay.connect(nodes.volume)
   nodes.volume.connect(nodes.analyser)
 
-  nodes.import = function(data){
+  nodes.import = function (data) {
     data = data || {}
     data.lfo = data.lfo || {}
     data.lfoGain = data.lfoGain || {}
@@ -39,7 +39,7 @@ module.exports = function (context, data) {
     this.volume.gain.value = data.volume.gain || 0.5
   }
 
-  nodes.export = function(){
+  nodes.export = function () {
     return {
       lfo: {
         type: this.lfo.type,
@@ -64,24 +64,24 @@ module.exports = function (context, data) {
     }
   }
 
-  nodes.connect = function(destination){
+  nodes.connect = function (destination) {
     this.analyser.connect(destination)
   }
 
-  nodes.input = function(){
+  nodes.input = function () {
     return this.filter
   }
 
-  nodes.start = function(){
+  nodes.start = function () {
     this.lfo.start()
   }
 
-  nodes.stop = function(){
+  nodes.stop = function () {
     this.lfo.stop()
   }
 
-  nodes.keys = function(){
-    return Object.keys(this).filter(function(k){
+  nodes.keys = function () {
+    return Object.keys(this).filter(function (k) {
       return ['import', 'export', 'connect', 'start', 'stop', 'keys'].indexOf(k) === -1
     })
   }

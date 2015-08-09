@@ -12,13 +12,13 @@ module.exports = function (context, data) {
   nodes.lfoGain.connect(nodes.filter.frequency)
   nodes.filter.connect(nodes.delay)
   nodes.filter.connect(nodes.volume)
-  node.delay.connect(nodes.volume)
+  nodes.delay.connect(nodes.volume)
   nodes.volume.connect(nodes.analyser)
 
   nodes.import = function(data){
     data = data || {}
     data.lfo = data.lfo || {}
-    data.gain = data.gain || {}
+    data.lfoGain = data.lfoGain || {}
     data.filter = data.filter || {}
     data.delay = data.delay || {}
     data.volume = data.volume || {}

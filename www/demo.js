@@ -57,4 +57,6 @@ if (window.ontouchstart) {
       tapEnd(mapRange(touch.clientX, 0, window.innerWidth, 0, 1), mapRange(touch.clientY, 0, window.innerHeight, 0, 1), touch.force)
     })
   }, false)
+} else {
+  document.body.textContent = "FAIL"
 }

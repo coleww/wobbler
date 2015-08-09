@@ -36,7 +36,7 @@ window.setInterval(function () {
   drone.source.frequency.value = notes[~~(Math.random() * notes.length)]
 }, 1000)
 
-if (window.ontouchstart) {
+if ('ontouchstart' in document.documentElement) {
   document.body.addEventListener('touchstart', function (e) {
     document.body.textContent = 'start'
     e.changedTouches.forEach(function (touch) {

@@ -38,18 +38,21 @@ window.setInterval(function () {
 
 if (window.ontouchstart) {
   document.body.addEventListener('touchstart', function (e) {
+    document.body.textContent = 'start'
     e.changedTouches.forEach(function (touch) {
       tapStart(mapRange(touch.clientX, 0, window.innerWidth, 0, 1), mapRange(touch.clientY, 0, window.innerHeight, 0, 1), touch.force)
     })
   }, false)
 
   document.body.addEventListener('touchmove', function (e) {
+    document.body.textContent = 'drag'
     e.changedTouches.forEach(function (touch) {
       dragChange(mapRange(touch.clientX, 0, window.innerWidth, 0, 1), mapRange(touch.clientY, 0, window.innerHeight, 0, 1), touch.force)
     })
   }, false)
 
   document.body.addEventListener('touchend', function (e) {
+    document.body.textContent = 'end'
     e.changedTouches.forEach(function (touch) {
       tapEnd(mapRange(touch.clientX, 0, window.innerWidth, 0, 1), mapRange(touch.clientY, 0, window.innerHeight, 0, 1), touch.force)
     })

@@ -17,7 +17,6 @@ drone.lowFilter.type = "lowpass"
 drone.filter.Q.value = 15
 drone.lowFilter.Q.value = 12
 
-document.getElementById("foo").textContent ="1010101010"
 
 function tapStart (x, y, force) {
   force = force !== undefined ? force : 0.5
@@ -47,72 +46,72 @@ window.setInterval(function () {
 
 
   var pairs = [mapRange(wobbler.delay.delayTime.value, 0, 0.25, 0, 1),
-  mapRange(drone.lowFilter.frequency.value, 0, 1000, 0, 1),
+  mapRange(drone.lowFilter.frequency.value, 0, 1500, 0, 1),
 
-  mapRange(wobbler.lfoGain.gain.value, 0, 1000, 0, 1),
-  mapRange(drone.filter.frequency.value, 0, 1000, 0, 1),
-
-  mapRange(wobbler.lfo.frequency.value, 0, 5, 0, 1),
-  mapRange(wobbler.delay.delayTime.value, 0, 0.25, 0, 1),
-
-  mapRange(drone.lowFilter.frequency.value, 0, 1000, 0, 1),
-  mapRange(drone.filter.frequency.value, 0, 1000, 0, 1),
-
-  mapRange(wobbler.lfo.frequency.value, 0, 5, 0, 1),
-  mapRange(wobbler.lfoGain.gain.value, 0, 1000, 0, 1),
-
-
-
-  mapRange(drone.lowFilter.frequency.value, 0, 1000, 0, 1),
-  mapRange(wobbler.delay.delayTime.value, 0, 0.25, 0, 1),
-
-
-  mapRange(drone.filter.frequency.value, 0, 1000, 0, 1),
-  mapRange(wobbler.lfoGain.gain.value, 0, 1000, 0, 1),
-
-
-  mapRange(wobbler.delay.delayTime.value, 0, 0.25, 0, 1),
-  mapRange(wobbler.lfo.frequency.value, 0, 5, 0, 1),
-
-
-  mapRange(wobbler.lfo.frequency.value, 0, 5, 0, 1),
-  mapRange(drone.lowFilter.frequency.value, 0, 1000, 0, 1),
-
-  mapRange(drone.filter.frequency.value, 0, 1000, 0, 1),
-  mapRange(wobbler.lfoGain.gain.value, 0, 1000, 0, 1),
-
-
-  mapRange(drone.filter.frequency.value, 0, 1000, 0, 1),
-  mapRange(drone.lowFilter.frequency.value, 0, 1000, 0, 1),
-
-
-  mapRange(drone.filter.frequency.value, 0, 1000, 0, 1),
-  mapRange(wobbler.lfoGain.gain.value, 0, 1000, 0, 1),
+  mapRange(wobbler.lfoGain.gain.value, 0, 1500, 0, 1),
+  mapRange(drone.filter.frequency.value, 0, 1500, 0, 1),
 
   mapRange(wobbler.lfo.frequency.value, 0, 5, 0, 1),
   mapRange(wobbler.delay.delayTime.value, 0, 0.25, 0, 1),
 
-  mapRange(drone.lowFilter.frequency.value, 0, 1000, 0, 1),
-  mapRange(drone.filter.frequency.value, 0, 1000, 0, 1),
+  mapRange(drone.lowFilter.frequency.value, 0, 1500, 0, 1),
+  mapRange(drone.filter.frequency.value, 0, 1500, 0, 1),
 
   mapRange(wobbler.lfo.frequency.value, 0, 5, 0, 1),
-  mapRange(wobbler.lfoGain.gain.value, 0, 1000, 0, 1),
+  mapRange(wobbler.lfoGain.gain.value, 0, 1500, 0, 1),
 
-  mapRange(drone.lowFilter.frequency.value, 0, 1000, 0, 1),
-  mapRange(drone.filter.frequency.value, 0, 1000, 0, 1),
+
+
+  mapRange(drone.lowFilter.frequency.value, 0, 1500, 0, 1),
+  mapRange(wobbler.delay.delayTime.value, 0, 0.25, 0, 1),
+
+
+  mapRange(drone.filter.frequency.value, 0, 1500, 0, 1),
+  mapRange(wobbler.lfoGain.gain.value, 0, 1500, 0, 1),
+
+
+  mapRange(wobbler.delay.delayTime.value, 0, 0.25, 0, 1),
+  mapRange(wobbler.lfo.frequency.value, 0, 5, 0, 1),
+
+
+  mapRange(wobbler.lfo.frequency.value, 0, 5, 0, 1),
+  mapRange(drone.lowFilter.frequency.value, 0, 1500, 0, 1),
+
+  mapRange(drone.filter.frequency.value, 0, 1500, 0, 1),
+  mapRange(wobbler.lfoGain.gain.value, 0, 1500, 0, 1),
+
+
+  mapRange(drone.filter.frequency.value, 0, 1500, 0, 1),
+  mapRange(drone.lowFilter.frequency.value, 0, 1500, 0, 1),
+
+
+  mapRange(drone.filter.frequency.value, 0, 1500, 0, 1),
+  mapRange(wobbler.lfoGain.gain.value, 0, 1500, 0, 1),
 
   mapRange(wobbler.lfo.frequency.value, 0, 5, 0, 1),
   mapRange(wobbler.delay.delayTime.value, 0, 0.25, 0, 1),
 
-  mapRange(wobbler.lfoGain.gain.value, 0, 1000, 0, 1),
+  mapRange(drone.lowFilter.frequency.value, 0, 1500, 0, 1),
+  mapRange(drone.filter.frequency.value, 0, 1500, 0, 1),
+
+  mapRange(wobbler.lfo.frequency.value, 0, 5, 0, 1),
+  mapRange(wobbler.lfoGain.gain.value, 0, 1500, 0, 1),
+
+  mapRange(drone.lowFilter.frequency.value, 0, 1500, 0, 1),
+  mapRange(drone.filter.frequency.value, 0, 1500, 0, 1),
+
+  mapRange(wobbler.lfo.frequency.value, 0, 5, 0, 1),
+  mapRange(wobbler.delay.delayTime.value, 0, 0.25, 0, 1),
+
+  mapRange(wobbler.lfoGain.gain.value, 0, 1500, 0, 1),
   mapRange(wobbler.delay.delayTime.value, 0, 0.25, 0, 1),
 
 
-  mapRange(drone.filter.frequency.value, 0, 1000, 0, 1),
+  mapRange(drone.filter.frequency.value, 0, 1500, 0, 1),
   mapRange(wobbler.lfo.frequency.value, 0, 5, 0, 1),
 
-  mapRange(wobbler.lfoGain.gain.value, 0, 1000, 0, 1),
-  mapRange(drone.lowFilter.frequency.value, 0, 1000, 0, 1)
+  mapRange(wobbler.lfoGain.gain.value, 0, 1500, 0, 1),
+  mapRange(drone.lowFilter.frequency.value, 0, 1500, 0, 1)
 ]
 
   var pieces = document.querySelectorAll(".piece")

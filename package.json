@@ -23,7 +23,7 @@
     "prep": [
       "build"
     ],
-    "noprompt": false
+    "noprompt": true
   },
   "license": "MIT",
   "keywords": [

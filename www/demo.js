@@ -11,8 +11,6 @@ wobbler.connect(context.destination)
 drone.start()
 wobbler.start()
 
-drone.filter.q.value = 7
-drone.lowFilter.q.value = 3
 
 function tapStart (x, y, force) {
   force = force !== undefined ? force : 0.5

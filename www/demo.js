@@ -45,36 +45,36 @@ window.setInterval(function () {
   drone.source.frequency.value = note
 
 
-  var pairs = [mapRange(wobbler.delay.delayTime.value, 0, 0.5, 0, 1),
+  var pairs = [mapRange(wobbler.delay.delayTime.value, 0, 1, 0, 1),
   mapRange(drone.lowFilter.frequency.value, 0, 2500, 0, 1),
 
   mapRange(wobbler.lfoGain.gain.value, 0, 2500, 0, 1),
   mapRange(drone.filter.frequency.value, 0, 2500, 0, 1),
 
-  mapRange(wobbler.lfo.frequency.value, 0, 5, 0, 1),
-  mapRange(wobbler.delay.delayTime.value, 0, 0.5, 0, 1),
+  mapRange(wobbler.lfo.frequency.value, 0, 15, 0, 1),
+  mapRange(wobbler.delay.delayTime.value, 0, 1, 0, 1),
 
   mapRange(drone.lowFilter.frequency.value, 0, 2500, 0, 1),
   mapRange(drone.filter.frequency.value, 0, 2500, 0, 1),
 
-  mapRange(wobbler.lfo.frequency.value, 0, 5, 0, 1),
+  mapRange(wobbler.lfo.frequency.value, 0, 15, 0, 1),
   mapRange(wobbler.lfoGain.gain.value, 0, 2500, 0, 1),
 
 
 
   mapRange(drone.lowFilter.frequency.value, 0, 2500, 0, 1),
-  mapRange(wobbler.delay.delayTime.value, 0, 0.5, 0, 1),
+  mapRange(wobbler.delay.delayTime.value, 0, 1, 0, 1),
 
 
   mapRange(drone.filter.frequency.value, 0, 2500, 0, 1),
   mapRange(wobbler.lfoGain.gain.value, 0, 2500, 0, 1),
 
 
-  mapRange(wobbler.delay.delayTime.value, 0, 0.5, 0, 1),
-  mapRange(wobbler.lfo.frequency.value, 0, 5, 0, 1),
+  mapRange(wobbler.delay.delayTime.value, 0, 1, 0, 1),
+  mapRange(wobbler.lfo.frequency.value, 0, 15, 0, 1),
 
 
-  mapRange(wobbler.lfo.frequency.value, 0, 5, 0, 1),
+  mapRange(wobbler.lfo.frequency.value, 0, 15, 0, 1),
   mapRange(drone.lowFilter.frequency.value, 0, 2500, 0, 1),
 
   mapRange(drone.filter.frequency.value, 0, 2500, 0, 1),
@@ -88,27 +88,27 @@ window.setInterval(function () {
   mapRange(drone.filter.frequency.value, 0, 2500, 0, 1),
   mapRange(wobbler.lfoGain.gain.value, 0, 2500, 0, 1),
 
-  mapRange(wobbler.lfo.frequency.value, 0, 5, 0, 1),
-  mapRange(wobbler.delay.delayTime.value, 0, 0.5, 0, 1),
+  mapRange(wobbler.lfo.frequency.value, 0, 15, 0, 1),
+  mapRange(wobbler.delay.delayTime.value, 0, 1, 0, 1),
 
   mapRange(drone.lowFilter.frequency.value, 0, 2500, 0, 1),
   mapRange(drone.filter.frequency.value, 0, 2500, 0, 1),
 
-  mapRange(wobbler.lfo.frequency.value, 0, 5, 0, 1),
+  mapRange(wobbler.lfo.frequency.value, 0, 15, 0, 1),
   mapRange(wobbler.lfoGain.gain.value, 0, 2500, 0, 1),
 
   mapRange(drone.lowFilter.frequency.value, 0, 2500, 0, 1),
   mapRange(drone.filter.frequency.value, 0, 2500, 0, 1),
 
-  mapRange(wobbler.lfo.frequency.value, 0, 5, 0, 1),
-  mapRange(wobbler.delay.delayTime.value, 0, 0.5, 0, 1),
+  mapRange(wobbler.lfo.frequency.value, 0, 15, 0, 1),
+  mapRange(wobbler.delay.delayTime.value, 0, 1, 0, 1),
 
   mapRange(wobbler.lfoGain.gain.value, 0, 2500, 0, 1),
-  mapRange(wobbler.delay.delayTime.value, 0, 0.5, 0, 1),
+  mapRange(wobbler.delay.delayTime.value, 0, 1, 0, 1),
 
 
   mapRange(drone.filter.frequency.value, 0, 2500, 0, 1),
-  mapRange(wobbler.lfo.frequency.value, 0, 5, 0, 1),
+  mapRange(wobbler.lfo.frequency.value, 0, 15, 0, 1),
 
   mapRange(wobbler.lfoGain.gain.value, 0, 2500, 0, 1),
   mapRange(drone.lowFilter.frequency.value, 0, 2500, 0, 1)
@@ -148,8 +148,8 @@ if ('ontouchstart' in document.documentElement) {
   }, false)
 } else {
   document.getElementById("foo").textContent = "FAIL"
-  redraw(0.5, 0.5, 0.5)
-  tapStart(0.5, 0.5, 0.5)
-  tapEnd(0.5, 0.5, 0.5)
-  dragChange(0.5, 0.5, 0.5)
+  redraw(1, 1, 1)
+  tapStart(1, 1, 1)
+  tapEnd(1, 1, 1)
+  dragChange(1, 1, 1)
 }

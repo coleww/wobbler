@@ -138,21 +138,31 @@ window.setInterval(function () {
 if ('ontouchstart' in document.documentElement) {
   document.getElementById("foo").addEventListener('touchstart', function (e) {
     var touch = e.touches.item(0)
+    if(touch){
     redraw(mapRange(touch.clientX, 0, window.innerWidth, 0, 1), mapRange(touch.clientY, 0, window.innerHeight, 0, 1), touch.force)
     tapStart(mapRange(touch.clientX, 0, window.innerWidth, 0, 1), mapRange(touch.clientY, 0, window.innerHeight, 0, 1), touch.force)
+  }
   }, false)
 
   document.getElementById("foo").addEventListener('touchmove', function (e) {
     var touch = e.touches.item(0)
+    if(touch){
     redraw(mapRange(touch.clientX, 0, window.innerWidth, 0, 1), mapRange(touch.clientY, 0, window.innerHeight, 0, 1), touch.force)
     dragChange(mapRange(touch.clientX, 0, window.innerWidth, 0, 1), mapRange(touch.clientY, 0, window.innerHeight, 0, 1), touch.force)
+  }
   }, false)
 
   document.getElementById("foo").addEventListener('touchend', function (e) {
     var touch = e.touches.item(0)
+    if(touch){
     redraw(mapRange(touch.clientX, 0, window.innerWidth, 0, 1), mapRange(touch.clientY, 0, window.innerHeight, 0, 1), touch.force)
     tapEnd(mapRange(touch.clientX, 0, window.innerWidth, 0, 1), mapRange(touch.clientY, 0, window.innerHeight, 0, 1), touch.force)
+  }
   }, false)
 } else {
   document.getElementById("foo").textContent = "FAIL"
+  redraw(0.5, 0.5, 0.5)
+  tapStart(0.5, 0.5, 0.5)
+  tapEnd(0.5, 0.5, 0.5)
+  dragChange(0.5, 0.5, 0.5)
 }

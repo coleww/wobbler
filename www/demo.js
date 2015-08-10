@@ -13,8 +13,8 @@ wobbler.start()
 
 function tapStart (x, y, force) {
   force = force !== undefined ? force : 0.5
-  wobbler.lfo.frequency.value = x * 10 * force
-  wobbler.filter.frequency.value = y * force * 35000 + 100
+  wobbler.lfo.frequency.value = x * 10
+  wobbler.filter.frequency.value = y * 35000 + 100
 }
 
 function dragChange (x, y, force) {

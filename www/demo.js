@@ -37,13 +37,13 @@ function tapEnd (x, y, force) {
 }
 
 function redraw (x, y, force) {
-  var ping = document.getElementById('ping')
-  ping.style.top = (x * window.innerHeight) + 'px'
-  ping.style.left = (y * window.innerWidth) + 'px'
+  var pingy = document.getElementById('ping')
+  pingy.style.top = (x * window.innerHeight) / 2 + 'px'
+  pingy.style.left = (y * window.innerWidth) / 2 + 'px'
 
-  force = force !== undefined ? force : 0.5
-  ping.style.width = force * 250 + 'px'
-  ping.style.height = force * 250 + 'px'
+  // force = force !== undefined ? force : 0.5
+  // ping.style.width = force * 250 + 'px'
+  // ping.style.height = force * 250 + 'px'
 
 }
 
@@ -139,25 +139,25 @@ if ('ontouchstart' in document.documentElement) {
   document.getElementById("foo").addEventListener('touchstart', function (e) {
     var touch = e.touches.item(0)
     if(touch){
-    redraw(mapRange(touch.clientX, 0, window.innerWidth, 0, 1), mapRange(touch.clientY, 0, window.innerHeight, 0, 1), touch.force)
-    tapStart(mapRange(touch.clientX, 0, window.innerWidth, 0, 1), mapRange(touch.clientY, 0, window.innerHeight, 0, 1), touch.force)
-  }
+      redraw(mapRange(touch.clientX, 0, window.innerWidth, 0, 1), mapRange(touch.clientY, 0, window.innerHeight, 0, 1), touch.force)
+      tapStart(mapRange(touch.clientX, 0, window.innerWidth, 0, 1), mapRange(touch.clientY, 0, window.innerHeight, 0, 1), touch.force)
+    }
   }, false)
 
   document.getElementById("foo").addEventListener('touchmove', function (e) {
     var touch = e.touches.item(0)
     if(touch){
-    redraw(mapRange(touch.clientX, 0, window.innerWidth, 0, 1), mapRange(touch.clientY, 0, window.innerHeight, 0, 1), touch.force)
-    dragChange(mapRange(touch.clientX, 0, window.innerWidth, 0, 1), mapRange(touch.clientY, 0, window.innerHeight, 0, 1), touch.force)
-  }
+      redraw(mapRange(touch.clientX, 0, window.innerWidth, 0, 1), mapRange(touch.clientY, 0, window.innerHeight, 0, 1), touch.force)
+      dragChange(mapRange(touch.clientX, 0, window.innerWidth, 0, 1), mapRange(touch.clientY, 0, window.innerHeight, 0, 1), touch.force)
+    }
   }, false)
 
   document.getElementById("foo").addEventListener('touchend', function (e) {
     var touch = e.touches.item(0)
     if(touch){
-    redraw(mapRange(touch.clientX, 0, window.innerWidth, 0, 1), mapRange(touch.clientY, 0, window.innerHeight, 0, 1), touch.force)
-    tapEnd(mapRange(touch.clientX, 0, window.innerWidth, 0, 1), mapRange(touch.clientY, 0, window.innerHeight, 0, 1), touch.force)
-  }
+      redraw(mapRange(touch.clientX, 0, window.innerWidth, 0, 1), mapRange(touch.clientY, 0, window.innerHeight, 0, 1), touch.force)
+      tapEnd(mapRange(touch.clientX, 0, window.innerWidth, 0, 1), mapRange(touch.clientY, 0, window.innerHeight, 0, 1), touch.force)
+    }
   }, false)
 } else {
   document.getElementById("foo").textContent = "FAIL"

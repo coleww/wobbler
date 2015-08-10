@@ -36,16 +36,7 @@ function tapEnd (x, y, force) {
   drone.filter.frequency.value = y * 1000 + 100
 }
 
-function redraw (x, y, force) {
-  var pingy = document.getElementById('ping')
-  pingy.style.top = (x * window.innerHeight) / 2 + 'px'
-  pingy.style.left = (y * window.innerWidth) / 2 + 'px'
 
-  // force = force !== undefined ? force : 0.5
-  // ping.style.width = force * 250 + 'px'
-  // ping.style.height = force * 250 + 'px'
-
-}
 
 var notes = ['146.83', '174.61', '220.0', '261.63', '293.67', '349.23', '440.0']
 var colors = ['red', 'lightgreen', 'blue', 'orange', 'yellow', 'magenta', 'pink']
@@ -139,7 +130,6 @@ if ('ontouchstart' in document.documentElement) {
   document.getElementById("foo").addEventListener('touchstart', function (e) {
     var touch = e.touches.item(0)
     if(touch){
-      redraw(mapRange(touch.clientX, 0, window.innerWidth, 0, 1), mapRange(touch.clientY, 0, window.innerHeight, 0, 1), touch.force)
       tapStart(mapRange(touch.clientX, 0, window.innerWidth, 0, 1), mapRange(touch.clientY, 0, window.innerHeight, 0, 1), touch.force)
     }
   }, false)
@@ -147,7 +137,6 @@ if ('ontouchstart' in document.documentElement) {
   document.getElementById("foo").addEventListener('touchmove', function (e) {
     var touch = e.touches.item(0)
     if(touch){
-      redraw(mapRange(touch.clientX, 0, window.innerWidth, 0, 1), mapRange(touch.clientY, 0, window.innerHeight, 0, 1), touch.force)
       dragChange(mapRange(touch.clientX, 0, window.innerWidth, 0, 1), mapRange(touch.clientY, 0, window.innerHeight, 0, 1), touch.force)
     }
   }, false)
@@ -155,7 +144,6 @@ if ('ontouchstart' in document.documentElement) {
   document.getElementById("foo").addEventListener('touchend', function (e) {
     var touch = e.touches.item(0)
     if(touch){
-      redraw(mapRange(touch.clientX, 0, window.innerWidth, 0, 1), mapRange(touch.clientY, 0, window.innerHeight, 0, 1), touch.force)
       tapEnd(mapRange(touch.clientX, 0, window.innerWidth, 0, 1), mapRange(touch.clientY, 0, window.innerHeight, 0, 1), touch.force)
     }
   }, false)

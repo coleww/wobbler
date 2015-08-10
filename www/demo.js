@@ -42,8 +42,8 @@ function redraw (x, y, force) {
   ping.style.left = (y * window.innerWidth) + 'px'
 
   force = force !== undefined ? force : 0.5
-  ping.style.width = force * 250
-  ping.style.height = force * 250
+  ping.style.width = force * 250 + 'px'
+  ping.style.height = force * 250 + 'px'
 
 }
 

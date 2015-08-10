@@ -17,12 +17,12 @@ drone.lowFilter.type = "lowpass"
 drone.filter.Q.value = 15
 drone.lowFilter.Q.value = 12
 
-document.getElementById("foo").textContent ="11111"
+document.getElementById("foo").textContent ="1010101010"
 
 function tapStart (x, y, force) {
   force = force !== undefined ? force : 0.5
   if(Math.random() < force){
-    wobbler.delay.delayTime.value = 1.5 * force
+    wobbler.delay.delayTime.value = 0.25 * force
   }
 }
 
@@ -40,7 +40,7 @@ var notes = ['146.83', '174.61', '220.0', '261.63', '293.67', '349.23', '440.0']
 
 window.setInterval(function () {
   drone.source.frequency.value = notes[~~(Math.random() * notes.length)]
-}, 1000)
+}, 2000)
 
 if ('ontouchstart' in document.documentElement) {
   document.getElementById("foo").addEventListener('touchstart', function (e) {

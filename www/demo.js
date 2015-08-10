@@ -17,7 +17,7 @@ drone.lowFilter.type = "lowpass"
 drone.filter.Q.value = 15
 drone.lowFilter.Q.value = 12
 
-document.getElementById("foo").textContent ="1.0"
+document.getElementById("foo").textContent ="11111"
 
 function tapStart (x, y, force) {
   force = force !== undefined ? force : 0.5
@@ -28,6 +28,7 @@ function tapStart (x, y, force) {
 
 function dragChange (x, y, force) {
   drone.lowFilter.frequency.value = y * 1250 + 100
+  wobbler.lfoGain.gain.value = 1500 * x
 }
 
 function tapEnd (x, y, force) {

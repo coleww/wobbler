@@ -11,22 +11,26 @@ wobbler.connect(context.destination)
 drone.start()
 wobbler.start()
 
-function tapStart (x, y, force) {
+drone.filter.q.value = 7
+drone.lowFilter.q.value = 3
 
+function tapStart (x, y, force) {
   force = force !== undefined ? force : 0.5
-  wobbler.delay.delayTime.value = 1.5 * force
+  if(Math.random() < force){
+    wobbler.delay.delayTime.value = 1.5 * force
+  }
 }
 
 function dragChange (x, y, force) {
-  drone.lowFilter.frequency.value = y * 2000 + 100
+  drone.lowFilter.frequency.value = y * 1500 + 100
 }
 
 function tapEnd (x, y, force) {
   wobbler.lfo.frequency.value = x * 5
-  drone.filter.frequency.value = y * 1500 + 100
+  drone.filter.frequency.value = y * 1000 + 100
 }
 
-var notes = ['146.83', '174.61', '220.0', '261.63', '293.67', '349.23', '440.0', '587.33']
+var notes = ['146.83', '174.61', '220.0', '261.63', '293.67', '349.23', '440.0']
 
 window.setInterval(function () {
   drone.source.frequency.value = notes[~~(Math.random() * notes.length)]
@@ -35,23 +39,16 @@ window.setInterval(function () {
 if ('ontouchstart' in document.documentElement) {
   document.getElementById("foo").addEventListener('touchstart', function (e) {
     var touch = e.touches.item(0)
-    document.getElementById("foo").textContent = "start" + touch.clientX + "|" + touch.clientY + "|" + window.innerWidth + "," + window.innerHeight + "||||" + mapRange(touch.clientX, 0, window.innerWidth, 0, 1) + '|' + mapRange(touch.clientY, 0, window.innerHeight, 0, 1)
-
     tapStart(mapRange(touch.clientX, 0, window.innerWidth, 0, 1), mapRange(touch.clientY, 0, window.innerHeight, 0, 1), touch.force)
   }, false)
 
   document.getElementById("foo").addEventListener('touchmove', function (e) {
     var touch = e.touches.item(0)
-    document.getElementById("foo").textContent = "move" + touch.clientX + "|" + touch.clientY + "|" + window.innerWidth + "," + window.innerHeight + "||||" + mapRange(touch.clientX, 0, window.innerWidth, 0, 1) + '|' + mapRange(touch.clientY, 0, window.innerHeight, 0, 1)
-
     dragChange(mapRange(touch.clientX, 0, window.innerWidth, 0, 1), mapRange(touch.clientY, 0, window.innerHeight, 0, 1), touch.force)
   }, false)
 
   document.getElementById("foo").addEventListener('touchend', function (e) {
-    document.getElementById("foo").textContent = "end"
     var touch = e.touches.item(0)
-    document.getElementById("foo").textContent = "end" + touch.clientX + "|" + touch.clientY + "|" + window.innerWidth + "," + window.innerHeight + "||||" + mapRange(touch.clientX, 0, window.innerWidth, 0, 1) + '|' + mapRange(touch.clientY, 0, window.innerHeight, 0, 1)
-
     tapEnd(mapRange(touch.clientX, 0, window.innerWidth, 0, 1), mapRange(touch.clientY, 0, window.innerHeight, 0, 1), touch.force)
   }, false)
 } else {

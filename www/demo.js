@@ -34,27 +34,25 @@ window.setInterval(function () {
 
 if ('ontouchstart' in document.documentElement) {
   document.getElementById("foo").addEventListener('touchstart', function (e) {
-    e.touches.forEach(function (touch) {
-      document.getElementById("foo").textContent = "start" + touch.clientX + "|" + touch.clientY + "|" + window.innerWidth + "," + window.innerHeight + "||||" + mapRange(touch.clientX, 0, window.innerWidth, 0, 1) + '|' + mapRange(touch.clientY, 0, window.innerHeight, 0, 1)
+    var touch = e.touches.item(0)
+    document.getElementById("foo").textContent = "start" + touch.clientX + "|" + touch.clientY + "|" + window.innerWidth + "," + window.innerHeight + "||||" + mapRange(touch.clientX, 0, window.innerWidth, 0, 1) + '|' + mapRange(touch.clientY, 0, window.innerHeight, 0, 1)
 
-      tapStart(mapRange(touch.clientX, 0, window.innerWidth, 0, 1), mapRange(touch.clientY, 0, window.innerHeight, 0, 1), touch.force)
-    })
+    tapStart(mapRange(touch.clientX, 0, window.innerWidth, 0, 1), mapRange(touch.clientY, 0, window.innerHeight, 0, 1), touch.force)
   }, false)
 
   document.getElementById("foo").addEventListener('touchmove', function (e) {
-    e.touches.forEach(function (touch) {
-      document.getElementById("foo").textContent = "move" + touch.clientX + "|" + touch.clientY + "|" + window.innerWidth + "," + window.innerHeight + "||||" + mapRange(touch.clientX, 0, window.innerWidth, 0, 1) + '|' + mapRange(touch.clientY, 0, window.innerHeight, 0, 1)
+    var touch = e.touches.item(0)
+    document.getElementById("foo").textContent = "move" + touch.clientX + "|" + touch.clientY + "|" + window.innerWidth + "," + window.innerHeight + "||||" + mapRange(touch.clientX, 0, window.innerWidth, 0, 1) + '|' + mapRange(touch.clientY, 0, window.innerHeight, 0, 1)
 
-      dragChange(mapRange(touch.clientX, 0, window.innerWidth, 0, 1), mapRange(touch.clientY, 0, window.innerHeight, 0, 1), touch.force)
-    })
+    dragChange(mapRange(touch.clientX, 0, window.innerWidth, 0, 1), mapRange(touch.clientY, 0, window.innerHeight, 0, 1), touch.force)
   }, false)
 
   document.getElementById("foo").addEventListener('touchend', function (e) {
-    e.touches.forEach(function (touch) {
-      document.getElementById("foo").textContent = "end" + touch.clientX + "|" + touch.clientY + "|" + window.innerWidth + "," + window.innerHeight + "||||" + mapRange(touch.clientX, 0, window.innerWidth, 0, 1) + '|' + mapRange(touch.clientY, 0, window.innerHeight, 0, 1)
+    document.getElementById("foo").textContent = "end"
+    var touch = e.touches.item(0)
+    document.getElementById("foo").textContent = "end" + touch.clientX + "|" + touch.clientY + "|" + window.innerWidth + "," + window.innerHeight + "||||" + mapRange(touch.clientX, 0, window.innerWidth, 0, 1) + '|' + mapRange(touch.clientY, 0, window.innerHeight, 0, 1)
 
-      tapEnd(mapRange(touch.clientX, 0, window.innerWidth, 0, 1), mapRange(touch.clientY, 0, window.innerHeight, 0, 1), touch.force)
-    })
+    tapEnd(mapRange(touch.clientX, 0, window.innerWidth, 0, 1), mapRange(touch.clientY, 0, window.innerHeight, 0, 1), touch.force)
   }, false)
 } else {
   document.body.textContent = "FAIL"

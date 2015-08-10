@@ -18,11 +18,11 @@ function tapStart (x, y, force) {
 }
 
 function dragChange (x, y, force) {
-  drone.lowFilter.frequency.value = y * 2500 + 100
+  drone.lowFilter.frequency.value = y * 2000 + 100
 }
 
 function tapEnd (x, y, force) {
-  wobbler.lfo.frequency.value = x * 10
+  wobbler.lfo.frequency.value = x * 5
   drone.filter.frequency.value = y * 1500 + 100
 }
 
@@ -34,21 +34,21 @@ window.setInterval(function () {
 
 if ('ontouchstart' in document.documentElement) {
   document.getElementById("foo").addEventListener('touchstart', function (e) {
-    document.getElementById("foo").textContent = "start" + e.changedTouches[0].clientX + "|" + e.changedTouches[0].clientY
+    document.getElementById("foo").textContent = "start" + e.changedTouches[0].clientX + "|" + e.changedTouches[0].clientY + "|" + window.innerWidth + "," + window.innerHeight + "||||" + mapRange(touch.clientX, 0, window.innerWidth, 0, 1) + ">>>" + mapRange(touch.clientY, 0, window.innerHeight, 0, 1)
     e.changedTouches.forEach(function (touch) {
       tapStart(mapRange(touch.clientX, 0, window.innerWidth, 0, 1), mapRange(touch.clientY, 0, window.innerHeight, 0, 1), touch.force)
     })
   }, false)
 
   document.getElementById("foo").addEventListener('touchmove', function (e) {
-    document.getElementById("foo").textContent = "move" + e.changedTouches[0].clientX + "|" + e.changedTouches[0].clientY
+    document.getElementById("foo").textContent = "move" + e.changedTouches[0].clientX + "|" + e.changedTouches[0].clientY + "|" + window.innerWidth + "," + window.innerHeight + "||||" + mapRange(touch.clientX, 0, window.innerWidth, 0, 1) + ">>>" + mapRange(touch.clientY, 0, window.innerHeight, 0, 1)
     e.changedTouches.forEach(function (touch) {
       dragChange(mapRange(touch.clientX, 0, window.innerWidth, 0, 1), mapRange(touch.clientY, 0, window.innerHeight, 0, 1), touch.force)
     })
   }, false)
 
   document.getElementById("foo").addEventListener('touchend', function (e) {
-    document.getElementById("foo").textContent = "end" + e.changedTouches[0].clientX + "|" + e.changedTouches[0].clientY
+    document.getElementById("foo").textContent = "end" + e.changedTouches[0].clientX + "|" + e.changedTouches[0].clientY + "|" + window.innerWidth + "," + window.innerHeight + "||||" + mapRange(touch.clientX, 0, window.innerWidth, 0, 1) + ">>>" + mapRange(touch.clientY, 0, window.innerHeight, 0, 1)
     e.changedTouches.forEach(function (touch) {
       tapEnd(mapRange(touch.clientX, 0, window.innerWidth, 0, 1), mapRange(touch.clientY, 0, window.innerHeight, 0, 1), touch.force)
     })

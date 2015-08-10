@@ -12,22 +12,19 @@ drone.start()
 wobbler.start()
 
 function tapStart (x, y, force) {
+
   force = force !== undefined ? force : 0.5
-  wobbler.lfo.frequency.value = x * 10
-  wobbler.filter.frequency.value = y * 35000 + 100
+  wobbler.delay.delayTime.value = 1.5 * force
 }
 
 function dragChange (x, y, force) {
-  force = force !== undefined ? force : 0.5
-  drone.filter.frequency.value = x * 15000 + 100
-  drone.lowFilter.frequency.value = y * 15000 + 100
+  drone.filter.frequency.value = x * 7500 + 100
+  drone.lowFilter.frequency.value = y * 10000 + 100
 }
 
 function tapEnd (x, y, force) {
-  force = force !== undefined ? force : 0.5
-  wobbler.delay.delayTime.value = 1.5 * force
   wobbler.lfo.frequency.value = x * 10
-  wobbler.filter.frequency.value = y * 15000 + 100
+  wobbler.filter.frequency.value = y * 9000 + 100
 }
 
 var notes = ['146.83', '174.61', '220.0', '261.63', '293.67', '349.23', '440.0', '587.33']

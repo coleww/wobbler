@@ -11,6 +11,13 @@ wobbler.connect(context.destination)
 drone.start()
 wobbler.start()
 
+drone.filter.type = "lowpass"
+drone.lowFilter.type = "lowpass"
+
+drone.filter.Q.value = 15
+drone.lowFilter.Q.value = 12
+
+document.getElementById("foo").textContent ="1.0"
 
 function tapStart (x, y, force) {
   force = force !== undefined ? force : 0.5
@@ -20,7 +27,7 @@ function tapStart (x, y, force) {
 }
 
 function dragChange (x, y, force) {
-  drone.lowFilter.frequency.value = y * 1500 + 100
+  drone.lowFilter.frequency.value = y * 1250 + 100
 }
 
 function tapEnd (x, y, force) {

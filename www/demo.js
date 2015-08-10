@@ -19,111 +19,121 @@ drone.lowFilter.Q.value = 12
 
 
 function tapStart (x, y, force) {
-  force = force !== undefined ? force : 0.5
+  force = force !== undefined ? force : 0.005
   if(Math.random() < force){
-    wobbler.delay.delayTime.value = 0.25 * force
+    wobbler.delay.delayTime.setValueAtTime(0.25 * force, context.currentTime)
+    // console.log(wobbler.delay.delayTime.value)
   }
 }
 
 function dragChange (x, y, force) {
-  drone.lowFilter.frequency.value = y * 1250 + 100
-  wobbler.lfoGain.gain.value = 1500 * x
+  drone.lowFilter.frequency.setValueAtTime(y * 1250 + 100, context.currentTime)
+  wobbler.lfoGain.gain.setValueAtTime(1500 * x, context.currentTime)
+  // console.log(wobbler.lfoGain.gain.value, drone.lowFilter.frequency.value)
 }
 
 function tapEnd (x, y, force) {
-  wobbler.lfo.frequency.value = x * 5
-  drone.filter.frequency.value = y * 1000 + 100
+  wobbler.lfo.frequency.setValueAtTime(x * 5, context.currentTime)
+  drone.filter.frequency.setValueAtTime(y * 1000 + 100, context.currentTime)
+  // console.log(drone.filter.frequency.value, wobbler.lfo.frequency.value)
 }
 
 
 
 var notes = ['146.83', '174.61', '220.0', '261.63', '293.67', '349.23', '440.0']
-var colors = ['red', 'lightgreen', 'blue', 'orange', 'yellow', 'magenta', 'pink']
-var backs = ['green', 'lightblue', 'plum', 'maroon', 'beige', 'brown', 'black']
+var colors = ['red', 'lightgreen', 'crimson', 'orange', 'yellow', 'magenta', 'pink']
+var backs = ['blue', 'lightblue', 'aqua', 'cyan', 'dodgerBlue', 'cornFlowerBlue', 'royalBlue']
+var note // awful
 window.setInterval(function () {
-  var note = notes[~~(Math.random() * notes.length)]
-  drone.source.frequency.value = note
+  note = notes[~~(Math.random() * notes.length)]
+  drone.source.frequency.setValueAtTime(note, context.currentTime)
 
-
-  var pairs = [mapRange(wobbler.delay.delayTime.value, 0, 1, 0, 1),
-  mapRange(drone.lowFilter.frequency.value, 0, 2500, 0, 1),
-
-  mapRange(wobbler.lfoGain.gain.value, 0, 2500, 0, 1),
-  mapRange(drone.filter.frequency.value, 0, 2500, 0, 1),
-
-  mapRange(wobbler.lfo.frequency.value, 0, 15, 0, 1),
-  mapRange(wobbler.delay.delayTime.value, 0, 1, 0, 1),
-
-  mapRange(drone.lowFilter.frequency.value, 0, 2500, 0, 1),
-  mapRange(drone.filter.frequency.value, 0, 2500, 0, 1),
-
-  mapRange(wobbler.lfo.frequency.value, 0, 15, 0, 1),
-  mapRange(wobbler.lfoGain.gain.value, 0, 2500, 0, 1),
-
-
-
-  mapRange(drone.lowFilter.frequency.value, 0, 2500, 0, 1),
-  mapRange(wobbler.delay.delayTime.value, 0, 1, 0, 1),
-
-
-  mapRange(drone.filter.frequency.value, 0, 2500, 0, 1),
-  mapRange(wobbler.lfoGain.gain.value, 0, 2500, 0, 1),
-
-
-  mapRange(wobbler.delay.delayTime.value, 0, 1, 0, 1),
-  mapRange(wobbler.lfo.frequency.value, 0, 15, 0, 1),
-
-
-  mapRange(wobbler.lfo.frequency.value, 0, 15, 0, 1),
-  mapRange(drone.lowFilter.frequency.value, 0, 2500, 0, 1),
-
-  mapRange(drone.filter.frequency.value, 0, 2500, 0, 1),
-  mapRange(wobbler.lfoGain.gain.value, 0, 2500, 0, 1),
-
-
-  mapRange(drone.filter.frequency.value, 0, 2500, 0, 1),
-  mapRange(drone.lowFilter.frequency.value, 0, 2500, 0, 1),
-
-
-  mapRange(drone.filter.frequency.value, 0, 2500, 0, 1),
-  mapRange(wobbler.lfoGain.gain.value, 0, 2500, 0, 1),
-
-  mapRange(wobbler.lfo.frequency.value, 0, 15, 0, 1),
-  mapRange(wobbler.delay.delayTime.value, 0, 1, 0, 1),
-
-  mapRange(drone.lowFilter.frequency.value, 0, 2500, 0, 1),
-  mapRange(drone.filter.frequency.value, 0, 2500, 0, 1),
-
-  mapRange(wobbler.lfo.frequency.value, 0, 15, 0, 1),
-  mapRange(wobbler.lfoGain.gain.value, 0, 2500, 0, 1),
-
-  mapRange(drone.lowFilter.frequency.value, 0, 2500, 0, 1),
-  mapRange(drone.filter.frequency.value, 0, 2500, 0, 1),
-
-  mapRange(wobbler.lfo.frequency.value, 0, 15, 0, 1),
-  mapRange(wobbler.delay.delayTime.value, 0, 1, 0, 1),
-
-  mapRange(wobbler.lfoGain.gain.value, 0, 2500, 0, 1),
-  mapRange(wobbler.delay.delayTime.value, 0, 1, 0, 1),
-
-
-  mapRange(drone.filter.frequency.value, 0, 2500, 0, 1),
-  mapRange(wobbler.lfo.frequency.value, 0, 15, 0, 1),
-
-  mapRange(wobbler.lfoGain.gain.value, 0, 2500, 0, 1),
-  mapRange(drone.lowFilter.frequency.value, 0, 2500, 0, 1)
-]
-
-  var pieces = document.querySelectorAll(".piece")
-  for(var i = 0; i < pieces.length - 1; i++){
-    console.log(pairs[i * 2], notes.indexOf(note))
-    pieces[i].style.top = (pairs[(i * 2) + 1] * window.innerHeight / 2.5) + 'px'
-    pieces[i].style.left = (pairs[(i * 2)] * window.innerWidth / 25) + 'px'
-    pieces[i].style.backgroundColor = colors[(notes.indexOf(note) + i) % colors.length]
-  }
-  document.getElementById("bar").style.backgroundColor = backs[(notes.indexOf(note) + pieces.length) % colors.length]
-  // use the values of all the variable things to draw something?
 }, 2000)
+
+window.setInterval(function () {
+
+    var pairs = [mapRange(wobbler.delay.delayTime.value, 0, 1, 0, 1),
+    mapRange(drone.lowFilter.frequency.value, 0, 2500, 0, 1),
+
+    mapRange(wobbler.lfoGain.gain.value, 0, 2500, 0, 1),
+    mapRange(drone.filter.frequency.value, 0, 2500, 0, 1),
+
+    mapRange(wobbler.lfo.frequency.value, 0, 15, 0, 1),
+    mapRange(wobbler.delay.delayTime.value, 0, 1, 0, 1),
+
+    mapRange(drone.lowFilter.frequency.value, 0, 2500, 0, 1),
+    mapRange(drone.filter.frequency.value, 0, 2500, 0, 1),
+
+    mapRange(wobbler.lfo.frequency.value, 0, 15, 0, 1),
+    mapRange(wobbler.lfoGain.gain.value, 0, 2500, 0, 1),
+
+
+
+    mapRange(drone.lowFilter.frequency.value, 0, 2500, 0, 1),
+    mapRange(wobbler.delay.delayTime.value, 0, 1, 0, 1),
+
+
+    mapRange(drone.filter.frequency.value, 0, 2500, 0, 1),
+    mapRange(wobbler.lfoGain.gain.value, 0, 2500, 0, 1),
+
+
+    mapRange(wobbler.delay.delayTime.value, 0, 1, 0, 1),
+    mapRange(wobbler.lfo.frequency.value, 0, 15, 0, 1),
+
+
+    mapRange(wobbler.lfo.frequency.value, 0, 15, 0, 1),
+    mapRange(drone.lowFilter.frequency.value, 0, 2500, 0, 1),
+
+    mapRange(drone.filter.frequency.value, 0, 2500, 0, 1),
+    mapRange(wobbler.lfoGain.gain.value, 0, 2500, 0, 1),
+
+
+    mapRange(drone.filter.frequency.value, 0, 2500, 0, 1),
+    mapRange(drone.lowFilter.frequency.value, 0, 2500, 0, 1),
+
+
+    mapRange(drone.filter.frequency.value, 0, 2500, 0, 1),
+    mapRange(wobbler.lfoGain.gain.value, 0, 2500, 0, 1),
+
+    mapRange(wobbler.lfo.frequency.value, 0, 15, 0, 1),
+    mapRange(wobbler.delay.delayTime.value, 0, 1, 0, 1),
+
+    mapRange(drone.lowFilter.frequency.value, 0, 2500, 0, 1),
+    mapRange(drone.filter.frequency.value, 0, 2500, 0, 1),
+
+    mapRange(wobbler.lfo.frequency.value, 0, 15, 0, 1),
+    mapRange(wobbler.lfoGain.gain.value, 0, 2500, 0, 1),
+
+    mapRange(drone.lowFilter.frequency.value, 0, 2500, 0, 1),
+    mapRange(drone.filter.frequency.value, 0, 2500, 0, 1),
+
+    mapRange(wobbler.lfo.frequency.value, 0, 15, 0, 1),
+    mapRange(wobbler.delay.delayTime.value, 0, 1, 0, 1),
+
+    mapRange(wobbler.lfoGain.gain.value, 0, 2500, 0, 1),
+    mapRange(wobbler.delay.delayTime.value, 0, 1, 0, 1),
+
+
+    mapRange(drone.filter.frequency.value, 0, 2500, 0, 1),
+    mapRange(wobbler.lfo.frequency.value, 0, 15, 0, 1),
+
+    mapRange(wobbler.lfoGain.gain.value, 0, 2500, 0, 1),
+    mapRange(drone.lowFilter.frequency.value, 0, 2500, 0, 1)
+  ]
+
+    var pieces = document.querySelectorAll(".piece")
+    for(var i = 0; i < pieces.length; i++){
+      pieces[i].style.top = (pairs[(i * 2) + 1] * window.innerHeight ) + 'px'
+      pieces[i].style.left = (pairs[(i * 2)] * window.innerWidth ) + 'px'
+      pieces[i].style.backgroundColor = colors[(notes.indexOf(note) + i) % colors.length]
+    }
+    // use the values of all the variable things to draw something?
+  }, 500)
+
+window.setInterval(function () {
+  document.getElementById("bar").style.backgroundColor = backs[(notes.indexOf(note) + 20) % colors.length]
+
+}, 1000)
 
 if ('ontouchstart' in document.documentElement) {
   document.getElementById("foo").addEventListener('touchstart', function (e) {
@@ -147,9 +157,15 @@ if ('ontouchstart' in document.documentElement) {
     }
   }, false)
 } else {
-  document.getElementById("foo").textContent = "FAIL"
-  redraw(1, 1, 1)
-  tapStart(1, 1, 1)
-  tapEnd(1, 1, 1)
-  dragChange(1, 1, 1)
+  document.getElementById("foo").addEventListener('click', function (e) {
+
+      var x = e.clientX
+      var y = e.clientY
+      // console.log(x, y)
+      console.log(mapRange(x, 0, window.innerWidth, 0, 1), mapRange(y, 0, window.innerHeight, 0, 1))
+      // tapStart(mapRange(x, 0, window.innerWidth, 0, 1), mapRange(y, 0, window.innerHeight, 0, 1))
+      dragChange(mapRange(x, 0, window.innerWidth, 0, 1), mapRange(y, 0, window.innerHeight, 0, 1), Math.random())
+      tapEnd(mapRange(x, 0, window.innerWidth, 0, 1), mapRange(y, 0, window.innerHeight, 0, 1), Math.random())
+  }, false)
+
 }

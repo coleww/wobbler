@@ -36,7 +36,7 @@ module.exports = function (context, data) {
 
     this.delay.delayTime.value = data.delay.delayTime || 0.25
 
-    this.volume.gain.value = data.volume.gain || 0.5
+    this.volume.gain.value = data.volume.gain || 0.3
   }
 
   nodes.export = function () {

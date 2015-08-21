@@ -1,0 +1,16 @@
+.hidden {
+  display: none;
+}
+
+.full {
+  position: absolute; top: 0; right: 0; bottom: 0; left: 0;
+}
+
+.piece {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  background-color: red;
+  border-radius: 150px;
+  float: left;
+}
